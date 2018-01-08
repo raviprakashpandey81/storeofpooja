@@ -1,0 +1,78 @@
+﻿@inherits Merchello.Web.Mvc.MerchelloTemplatePage
+@using Merchello.FastTrack.Ui
+@using Merchello.Web
+@{
+    //Layout = "FastTrack.cshtml";
+    Layout = "_layoutInner.cshtml";
+}
+
+
+@*<div class="row">
+    <div class="span12">
+        <div class="well well-small">
+            @if (CurrentCustomer.Basket().Items.Any())
+            {
+                @Html.Action("BasketForm", "StoreBasket", new { area = "Merchello" })
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <a href="@ExampleUiHelper.Content.GetStoreRoot().Url">Continue Shopping</a>
+                    </div>
+                    <div class="col-lg-4 text-right">
+                        <a href="@ExampleUiHelper.Content.GetCheckout().Url" class="btn btn-primary">Checkout</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <p>
+                    <a href="@ExampleUiHelper.Content.GetStoreRoot().Url">There's nothing in your shopping cart, start shopping!</a>
+                </p>
+            }
+        </div>
+    </div>
+    </div>*@
+
+
+<!-- about -->
+<div class="privacy about">
+   @Html.Partial("_Headline")
+
+   <div class="checkout-right">
+       @if (CurrentCustomer.Basket().Items.Any())
+            {
+                @Html.Action("BasketForm", "StoreBasket", new { area = "Merchello" })
+
+        <div class="row">
+            <div class="col-lg-8">
+                <a href="@ExampleUiHelper.Content.GetStoreRoot().Url">Continue Shopping</a>
+            </div>
+            <div class="col-lg-4 text-right">
+                <a href="@ExampleUiHelper.Content.GetCheckout().Url" class="btn btn-primary">Checkout</a>
+            </div>
+        </div>
+       }
+       else
+       {
+        <p>
+            <a href="@ExampleUiHelper.Content.GetStoreRoot().Url">There's nothing in your shopping cart, start shopping!</a>
+        </p>
+       }
+   
+   </div>
+    <div class="checkout-left">
+        
+        @*<div class="col-md-4 checkout-left1-basket">
+            <h4><a href="@ExampleUiHelper.Content.GetStoreRoot().Url">Continue Shopping</a></h4>
+        </div>
+
+        <div class="col-md-4 checkout-right-basket">
+            <h4> <a href="@ExampleUiHelper.Content.GetCheckout().Url">Checkout</a></h4>
+        </div>*@
+
+
+    <div class="clearfix"> </div>
+    </div>
+
+</div>
+<!-- //about -->

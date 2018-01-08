@@ -1,0 +1,22 @@
+﻿@inherits UmbracoTemplatePage
+
+<!-- mail -->
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title asd">
+            <a class="pa_italic" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span><i class="glyphicon glyphicon-minus" aria-hidden="true"></i>
+                @(Model.Content.HasProperty("question") && Model.Content.HasValue("question") ? Umbraco.Field("question") : MvcHtmlString.Create(Model.Content.Name))
+            </a>
+        </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body panel_text">
+            @(Model.Content.HasProperty("answer") && Model.Content.HasValue("answer") ? Umbraco.Field("answer") : MvcHtmlString.Create(Model.Content.Name))
+        </div>
+    </div>
+</div>
+        
+            
+
+          

@@ -1,0 +1,44 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.AboutUs>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+   Layout = "_layoutInner.cshtml";
+}
+
+<!-- about -->
+<div class="privacy about">
+   <h3>@(Model.Content.HasProperty("headline") && Model.Content.HasValue("headline") ? Umbraco.Field("headline") : MvcHtmlString.Create(Model.Content.Name))</h3>
+
+        @if (Model.Content.HasProperty("brief") && Model.Content.HasValue("brief"))
+        {
+            <p class="animi">
+                @Umbraco.Field("brief")
+            </p>
+        }
+
+        @*<p class="animi">
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
+                praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias
+                excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
+                officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem
+                rerum facilis est et expedita distinctio.
+            </p>*@
+        @if (Model.Content.HasProperty("longDescription") && Model.Content.HasValue("longDescription"))
+        {
+            <div class="agile_about_grids">
+                @*<div class="col-md-6 agile_about_grid_right">
+                    <img src="images/31.jpg" alt=" " class="img-responsive" />
+                </div>
+                <div class="col-md-6 agile_about_grid_left">*@
+                    @Umbraco.Field("longDescription")
+                @*</div>*@
+                <div class="clearfix"> </div>
+            </div>
+
+        }
+
+       
+
+</div>
+
+

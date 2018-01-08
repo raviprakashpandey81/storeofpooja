@@ -1,0 +1,62 @@
+﻿@inherits UmbracoViewPage<Merchello.Web.Models.VirtualContent.IProductContent>
+@using Merchello.Core
+
+<div class="col-md-3 top_brand_left">
+    <div class="hover14 column">
+        <div class="agile_top_brand_left_grid">
+            @*<div class="tag">
+        <img src="images/tag.png" alt=" " class="img-responsive" />
+     </div
+    <div class="agile_top_brand_left_grid_pos">
+        <img src="images/offer.png" alt=" " class="img-responsive" />
+    </div>>*@
+            <div class="agile_top_brand_left_grid1">
+                <figure>
+                    <div class="snipcart-item block">
+                        <div class="snipcart-thumb">
+                           
+                                <a href="@Model.Url">
+                                    @if (Model.HasValue("imageProduct"))
+                                    {
+                                        var mediaId = Model.GetPropertyValue<string>("imageProduct");
+                                        var image = Umbraco.TypedMedia(mediaId);
+                                        <img class="img-responsive" src="@image.GetCropUrl(140, 140)" alt="@Model.Name">
+
+                                    }
+                                </a>
+
+                            <p>@Model.Name</p>
+                            @*<h4>$7.99 <span>$10.00</span></h4>*@
+                        </div>
+                        <div class="snipcart-details top_brand_home_details">
+                            
+                              
+                                @Html.Action("AddProductToBasketForm", "StoreBasket", new { area = "Merchello", model = Model })
+                            
+                            @*<form action="checkout.html" method="post">
+                                <fieldset>
+                                    <input type="hidden" name="cmd" value="_cart" />
+                                    <input type="hidden" name="add" value="1" />
+                                    <input type="hidden" name="business" value=" " />
+                                    <input type="hidden" name="item_name" value="Fortune Sunflower Oil" />
+                                    <input type="hidden" name="amount" value="7.99" />
+                                    <input type="hidden" name="discount_amount" value="1.00" />
+                                    <input type="hidden" name="currency_code" value="USD" />
+                                    <input type="hidden" name="return" value=" " />
+                                    <input type="hidden" name="cancel_return" value=" " />
+                                    <input type="submit" name="submit" value="Add to cart" class="button" />
+                                </fieldset>
+
+                            </form>*@
+
+                        </div>
+                    </div>
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

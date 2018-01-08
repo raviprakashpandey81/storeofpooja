@@ -1,0 +1,36 @@
+﻿@inherits Merchello.Web.Mvc.MerchelloTemplatePage
+@using Merchello.FastTrack.Ui
+@using Merchello.Web
+
+@{
+   // Layout = "FastTrack.cshtml";
+  Layout = "_layoutInner.cshtml";
+    if (CurrentCustomer.Basket().IsEmpty)
+    {
+        Response.Redirect(ExampleUiHelper.Content.GetStoreRoot().Url);
+    }
+}
+<!-- about -->
+@Html.Partial("_Headline")
+
+
+<div class="privacy about">
+    @Html.Partial("_Headline")
+    <div class="checkout-right">
+        @RenderBody()
+    </div>
+    <div class="checkout-left">
+
+        <div class="clearfix"> </div>
+    </div>
+
+
+
+</div>
+    @*<div class="row">
+        <div class="span12">
+            <div class="well well-small">
+                @RenderBody()
+            </div>
+        </div>
+    </div>*@

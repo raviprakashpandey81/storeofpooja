@@ -1,0 +1,14 @@
+﻿@using Merchello.Web;
+@using Merchello.FastTrack.Ui
+@{  
+    var merchello = new MerchelloHelper();
+    var categories = merchello.Collections.Product.GetRootLevelCollections().FirstOrDefault();
+    var storeRoot = ExampleUiHelper.Content.GetStoreRoot();
+    var catalogRoot = storeRoot.FirstChild(x => x.DocumentTypeAlias == "ftCatalog" && x.IsVisible());
+}
+
+    <div class="w3l_banner_nav_right_banner7">
+        <h3>Best Deals For New Products<span class="blink_me"></span></h3>
+    </div>
+ 
+

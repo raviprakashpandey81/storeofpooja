@@ -1,0 +1,31 @@
+﻿@using System.Web.Mvc.Html
+@using Merchello.Web
+@using Merchello.Web.Search
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<FtCategory>
+@{
+    //Layout = "FastTrack.cshtml";
+    Layout = "_layoutCategory.cshtml";
+}
+
+
+
+
+
+<div class="w3ls_w3l_banner_nav_right_grid ">
+    @*<h3>Beverages</h3> w3ls_w3l_banner_nav_right_grid_sub*@
+    <div class="w3ls_w3l_banner_nav_right_grid1">
+        @*<h6>soft drinks</h6>*@
+        @Html.Partial("_Headline")
+        @Html.Partial("_CatProductBoxList", Model.Products)
+        <div class="clearfix"> </div>
+    </div>
+  
+</div>
+
+
+
+
+@*<div class="container-fluid">
+    @Html.Partial("_ProductBoxList", Model.Products)
+</div>*@
+

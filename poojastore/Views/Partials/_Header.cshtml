@@ -1,0 +1,39 @@
+﻿@inherits Merchello.Web.Mvc.MerchelloTemplatePage
+@using Merchello.Core.Models
+@using Merchello.FastTrack.Ui
+@using Merchello.Web
+@{ 
+    var basketPage = ExampleUiHelper.Content.GetBasket();
+}
+<div class="logo_products">
+    <div><Marquee> <font color="red">Site is under construction and not operative now. Please do not do any transaction for now.For any enquiries please contact at <b>admin@poojasamgari.com</b>. </font></Marquee></div>
+    <div class="container">
+               
+          <div class="w3ls_logo_products_left">
+            <h1><a href="@Url.Content("~/")"><span>Pooja</span> Smagari</a></h1>
+        </div>
+        
+         <div class="w3ls_logo_products_left1">
+            <ul class="special_items">
+                <li>&nbsp;</li>
+                @*<li><a href="events.html">Events</a><i>/</i></li>*@
+                <li><a href="/about-us/">About Us</a><i>/</i></li>
+                <li><a href="/services/">Services</a></li>
+              
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+        
+        <div class="w3ls_logo_products_left1">
+            <ul class="phone_email">
+                <li><i class="fa fa-phone" aria-hidden="true"></i>(+91) 96481 12345</li>
+                <li><i class="fa fa-envelope-o" aria-hidden="true"></i><a href="mailto:admin@poojasamgari.com">admin@poojasamgari.com</a></li>
+            </ul>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,114 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+
+<script>
+    $(document).ready(function () {
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+        var sub_btn = $(".btn primary");
+
+        var count = 1;
+
+        for (i = 0; i < 4; i++) {
+            $(wrapper).append('<tr class="input_row"><td><input type="text" class="name required"></td><td><input type="text" class="email required"></td><td><input type="text" class="mobile required"></td><td><input type="text" class="message required"></td><td></tr>'); //add input box
+        }
+
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            $(wrapper).append('<tr class="input_row"><td><input type="text" class="name required"></td><td><input type="text" class="email required"></td><td><input type="text" class="mobile required"></td><td><input type="text" class="message required"></td><td><a href="#" class="remove_field">Remove</a></td></tr>'); //add input box
+
+
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).closest('tr').remove();
+        })
+
+        $(wrapper).on("change", "input", function (e) {
+            //create json object
+            var val = [];
+
+            $(".input_row").each(function (index) {
+                var row = {};
+                row.name = $(".name", $(this)).val();
+                row.email = $(".email", $(this)).val();
+                row.mobile = $(".mobile", $(this)).val();
+                row.message = $(".message", $(this)).val();
+                val.push(row);
+
+            });
+
+            if ($("#@Model.Id").val() !== "")
+                {
+                    $("#@Model.Id").val(JSON.stringify(val));
+                }
+        });
+     //   alert(sub_btn);
+
+
+
+
+        $(":submit").click(function () {
+
+            var submitButton = $("form input[type='submit']").attr("disabled", true);
+            $("form input.required").change(function () {
+                var valid = true;
+                $.each($("form input.required"), function (index, value) {
+                   // alert("comes here");
+                    if (!$(value).val()) {
+                        valid = false;
+                    }
+                });
+                if (valid) {
+                    $(submitButton).attr("disabled", false);
+                    console.log("valid");
+                    //alert("valid");
+                }
+                else {
+                    $(submitButton).attr("disabled", true);
+                }
+            });
+
+        });
+
+
+
+
+
+    });
+
+
+
+</script>
+
+<div>
+    <table class="input_fields_wrap">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Message</th>
+        </tr>
+        <tr class="input_row">
+            <td>
+                <input type="text" class="name required">
+            </td>
+            <td>
+                <input type="text" class="email required">
+            </td>
+            <td>
+                <input type="text" class="mobile required">
+            </td>
+            <td>
+                <input type="text" class="message required">
+            </td>
+                       
+        </tr>
+
+    </table>
+    
+    <button class="add_field_button">Add</button><br />
+    <input type="text" name="@Model.Name" id="@Model.Id" value="@Model.Value" />
+
+</div>
+

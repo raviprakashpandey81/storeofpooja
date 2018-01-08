@@ -1,0 +1,99 @@
+﻿@inherits UmbracoViewPage<poojastore.Model.contact>
+
+@* the fun starts here *@
+
+
+<!-- mail -->
+<div class="mail">
+    <h3>Mail Us</h3>
+    <div class="agileinfo_mail_grids">
+        <div class="col-md-4 agileinfo_mail_grid_left">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i></li>
+                <li>address<span>Lucknow</span></li>
+            </ul>
+            <ul>
+                <li><i class="fa fa-envelope" aria-hidden="true"></i></li>
+                <li>email<span><a href="mailto:support@poojasamgari.com">support@poojasamgari.com</a></span></li>
+            </ul>
+            <ul>
+                <li><i class="fa fa-phone" aria-hidden="true"></i></li>
+                <li>call to us<span>(+00) 000 0000 000</span></li>
+            </ul>
+        </div>
+        <div class="col-md-8 agileinfo_mail_grid_right">
+            
+            @using (Html.BeginUmbracoForm("SubmitPSForm", "PSContact", FormMethod.Post))
+            {
+            @Html.AntiForgeryToken()
+                @Html.ValidationSummary()
+
+                <div class="col-md-6 wthree_contact_left_grid">
+                    @Html.TextBoxFor(m => m.FirstName, new { placeholder = "First Name", @class = "form-input" })
+                    @Html.TextBoxFor(m => m.EmailAddress, new { placeholder = "Email", @class = "form-input" })
+                </div>
+                <div class="col-md-6 wthree_contact_left_grid">
+                    @Html.TextBoxFor(m => m.LastName, new { placeholder = "Last Name", @class = "form-input" })
+                    @Html.TextBoxFor(m => m.ContactNo, new { placeholder = "Contact No", @class = "form-input" })
+                </div>
+               
+                <div class="clearfix"> </div>
+                @Html.TextAreaFor(m => m.Message, new { placeholder = "Message", @class = "form-input" })
+                <div class="g-recaptcha" data-sitekey="6LcdFz0UAAAAAFcloMzBpt5rKBkOaPIleZgqqwij"></div>
+
+                <input type="submit" value="Submit">
+                <input type="reset" value="Clear">
+        }   
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+<!-- //mail -->
+		
+
+
+    @*@using (Html.BeginUmbracoForm("SubmitPSForm", "PSContact", FormMethod.Post))
+            {
+        @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            @Html.LabelFor(m => m.FirstName)
+        </div>
+        <div class="col-xs-9">
+            @Html.TextBoxFor(m => m.FirstName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            @Html.LabelFor(m => m.LastName)
+        </div>
+        <div class="col-xs-9">
+            @Html.TextBoxFor(m => m.LastName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            @Html.LabelFor(m => m.EmailAddress)
+        </div>
+        <div class="col-xs-9">
+            @Html.TextBoxFor(m => m.EmailAddress)
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-xs-3">
+            @Html.LabelFor(m => m.Message)
+        </div>
+        <div class="col-xs-9">
+            @Html.TextAreaFor(m => m.Message)
+        </div>
+    </div>
+
+    <div class="g-recaptcha" data-sitekey="6LcdFz0UAAAAAFcloMzBpt5rKBkOaPIleZgqqwij"></div>
+
+    <button>Submit</button>
+
+    }*@ 

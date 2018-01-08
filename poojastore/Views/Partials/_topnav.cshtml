@@ -1,0 +1,92 @@
+﻿@inherits Merchello.Web.Mvc.MerchelloTemplatePage
+@using Merchello.Core.Models
+@using Merchello.FastTrack.Ui
+@using Merchello.Web
+@{
+    var storeRoot = ExampleUiHelper.Content.GetStoreRoot();
+    var catalogRoot = storeRoot.FirstChild(x => x.DocumentTypeAlias == "ftCatalog" && x.IsVisible());
+    var basketPage = ExampleUiHelper.Content.GetBasket();
+    var accountPage = ExampleUiHelper.Content.GetAccount();
+}
+
+<style>
+    .quantitybutton {
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    text-transform: capitalize;
+    padding: .5em 2.5em .5em 1em;
+    border: 1px solid #84c639;
+    margin: .35em 0 0;
+    background: url(/assets/images/cart.png) no-repeat 116px 9px;
+    
+}
+ .quantitybutton:hover {
+     color: #fff;
+}
+   
+</style>
+<div class="agileits_header">
+    <div class="w3l_offers">
+        <a href="#">Today's special Offers !</a>
+    </div>
+    <div class="w3l_search">
+        <form action="#" method="post">
+            <input type="text" name="Product" value="Search a product..." onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search a product...';}" required="">
+            <input type="submit" value="">
+        </form>
+    </div>
+    @*<a href="@basketPage.Url"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> @basketPage.Name (<span data-muilabel="basketcount">@CurrentCustomer.Basket().Items.Count</span>)</a>*@
+    <div class="product_list_header">
+          <div></div>
+               <form action="#" method="post" class="last">
+                <fieldset>
+                    @*<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>*@
+                       
+                 @*<input type="button" onclick="javascript:location.href=@basketPage.Url" value="Your @basketPage.Name (@CurrentCustomer.Basket().TotalQuantityCount) " class="button">*@
+                
+
+                 <a href="@basketPage.Url" class="quantitybutton"> Your @basketPage.Name (<span data-muilabel="basketcount">@CurrentCustomer.Basket().TotalQuantityCount </span>)</a>
+                   
+                </fieldset>
+            </form>
+</div>
+    @*<div class="w3l_header_right">
+        <ul>
+            <li class="dropdown profile_details_drop">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user" aria-hidden="true"></i><span class="caret"></span></a>
+                <div class="mega-dropdown-menu">
+                    <div class="w3ls_vegetables">
+                        <ul class="dropdown-menu drp-mnu">
+                            <li>
+                                <a href="@accountPage.Url">
+                                @if (CurrentCustomer.IsAnonymous)
+                                {
+                                    <span class="icon-user">Login</span>
+                                }
+                                else
+                                {
+                                    var customer = (ICustomer)CurrentCustomer;
+                                    <span class="icon-user">@customer.FirstName @customer.LastName</span>
+                                }
+                                
+                                </a>
+                            
+                            </li>
+                            
+                            @if (!CurrentCustomer.IsAnonymous)
+                            {
+                                <li><a href="@ExampleUiHelper.Content.GetChangePassword().Url">Change Password</a></li> 
+                                <li>@Html.ActionLink("Logout", "Logout", "CustomerMembership", new { area = "FastTrack", redirectId = Model.Content.Id }, null)</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>*@
+    <div class="w3l_header_right1">
+        <h2><a href="/contactform/">Contact Us</a></h2>
+    </div>
+    <div class="clearfix"> </div>
+</div>

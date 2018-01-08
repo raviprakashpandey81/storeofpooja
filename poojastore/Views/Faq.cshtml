@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+
+@{
+    Layout = "_layoutInner.cshtml";
+    
+    var faqitem = Model.Content;
+    
+}
+
+
+<!-- faq -->
+<div class="faq">
+    <h3>@(Model.Content.HasProperty("headline") && Model.Content.HasValue("headline") ? Umbraco.Field("headline") : MvcHtmlString.Create(Model.Content.Name))</h3>
+    <div class="panel-group w3l_panel_group_faq" id="accordion" role="tablist" aria-multiselectable="true">
+      @foreach (var child in faqitem.Children)
+      {
+        @Html.Partial("_faqitem",child)
+      }
+      
+    </div>
+</div>
+<!-- //faq -->

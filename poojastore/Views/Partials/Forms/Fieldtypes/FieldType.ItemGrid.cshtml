@@ -1,0 +1,158 @@
+@model Umbraco.Forms.Mvc.Models.FieldViewModel
+
+<script>
+    $(document).ready(function () {
+        var wrapper = $(".input_fields_wrap"); //Fields wrapper
+        var add_button = $(".add_field_button"); //Add button ID
+        var sub_btn = $(".btn primary");
+        
+        var count = 0;
+        $(add_button).click(function (e) { //on add input button click
+            e.preventDefault();
+            alert(count);
+            if (count > 4)
+                {
+                $(wrapper).append('<tr class="input_row"><td><input type="text" class="name"></td><td><input type="text" class="email"></td><td><input type="text" class="mobile"></td><td><input type="text" class="message"></td><td><a href="#" class="remove_field">Remove</a></td></tr>'); //add input box
+            }
+            else
+            {
+                $(wrapper).append('<tr class="input_row"><td><input type="text" class="name"></td><td><input type="text" class="email"></td><td><input type="text" class="mobile"></td><td><input type="text" class="message"></td><td></tr>'); //add input box
+            }
+            count = count + 1;
+
+        });
+
+        $(wrapper).on("click", ".remove_field", function (e) { //user click on remove text
+            e.preventDefault();
+            $(this).closest('tr').remove();
+        })
+
+        $(wrapper).on("change", "input", function (e) {
+            //create json object
+            var val = [];
+
+            $(".input_row").each(function (index) {
+                var row = {};
+                row.name = $(".name", $(this)).val();
+                row.email = $(".email", $(this)).val();
+                row.mobile = $(".mobile", $(this)).val();
+                row.message = $(".message", $(this)).val();
+                val.push(row);
+
+            });
+
+            $("#@Model.Id").val(JSON.stringify(val));
+
+        });
+
+        //$(sub_btn).click(function (e) {
+        //    alert(count + " fM,M,alse");
+        //    if (count < 4) {
+        //        alert(count + " false");
+        //        return false;
+        //    }
+        //    else {
+        //        alert(count + " true");
+        //        return true;
+        //    }
+
+        //});
+      
+         
+    })
+
+</script>
+
+<div>
+    <table class="input_fields_wrap">
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Message</th>
+        </tr>
+        <tr class="input_row">
+            <td>
+                <input type="text" class="name">
+            </td>
+            <td>
+                <input type="text" class="email">
+            </td>
+            <td>
+                <input type="text" class="mobile">
+            </td>
+            <td>
+                <input type="text" class="message">
+            </td>
+        </tr>
+
+    </table>
+    
+    <button class="add_field_button">Add</button><br />
+    <input type="text" name="@Model.Name" id="@Model.Id" value="@Model.Value" />
+
+</div>
+
+
+
+@*<table id="table_@Model.Id">
+    <thead>
+        <tr><th>Name</th><th>Email</th><th>Phone</th><th>Message</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input type="text" data-field="Name" id="name_0" /></td>
+            <td><input type="text" data-field="Email" id="email_0" /></td>
+            <td><input type="text" data-field="Phone" id="phone_0" /></td>
+            <td><input type="text" data-field="Message" id="Message_0" /></td>
+        </tr>
+    </tbody>
+</table>
+<a href="#" id="addRow">Add Row</a>
+<input type="hidden" name="@Model.Name" id="@Model.Id" value="@Model.Value" />
+
+<script language="javascript">
+
+// adds a row to the table.
+function addRow() {
+  var body  = document.querySelector("#table_@Model.Id > tbody")
+    , rows  = body.querySelectorAll("tr")
+    , index = rows.length
+    , row   = `<tr>
+    <td><input type="text" data-field="Name" id="Name_${index}" /></td>
+    <td><input type="text" data-field="Email" id="Name_${index}" /></td>
+    <td><input type="text" data-field="Phone" id="Phone_${index}" /></td>
+    <td><input type="text" data-field="Message" id="Message_${index}" /></td>
+</tr>`
+    ;
+  body.insertAdjacentHTML('beforeend', row);
+  addEventListeners(); // re-add event listeners for the new row.
+}
+
+// updates the value of the submitted (hidden) field
+function updateJson() {
+  var data = [];
+  document.querySelectorAll("#table_@Model.Id > tbody > tr").forEach(row => {
+    var item = {};
+    row.querySelectorAll('input').forEach(input => {
+      item[input.dataset['field']] = input.value;
+    });
+    data.push(item);
+  });
+  document.getElementById('@Model.Id').value = JSON.stringify(data);
+}
+
+// adds event listeners to the inputs.
+function addEventListeners() {
+  document.querySelectorAll("#body_@Model.Id > tbody input").forEach(input => {
+    input.addEventListener('blur', updateJson);
+});
+}
+
+// add a click event listener for the link to add another row.
+document.getElementById('addRow').addEventListener('click', addRow);
+// add the event listeners to the existing inputs.
+addEventListeners();
+
+
+</script>*@

@@ -1,0 +1,105 @@
+﻿@inherits UmbracoTemplatePage
+<!--
+author: W3layouts
+author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Under Construction | @Model.Content.Name</title>
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Grocery Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+               function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- font-awesome icons -->
+    <link href="/assets/css/font-awesome.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="/assets/js/jquery-1.11.1.min.js"></script>
+    @*<script src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.js"></script>*@
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.0/jquery.validate.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mvc/5.0/jquery.validate.unobtrusive.js"></script>
+    <!-- //js -->
+    <link href='//fonts.googleapis.com/css?family=Ubuntu:400,300,300italic,400italic,500,500italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- start-smoth-scrolling -->
+    <script type="text/javascript" src="/assets/js/move-top.js"></script>
+    <script type="text/javascript" src="/assets/js/easing.js"></script>
+    <script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+    </script>
+    <!-- start-smoth-scrolling -->    <!-- Favicons -->
+    <link rel="shortcut icon" href="/assets/ico/favicon.ico">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+<body>
+    <!--  Upper Header Section   -->
+    @Html.Partial("~/views/partials/_topnav.cshtml")
+
+    <!-- script-for sticky-nav -->
+    <script>
+	$(document).ready(function() {
+		 var navoffeset=$(".agileits_header").offset().top;
+		 $(window).scroll(function(){
+			var scrollpos=$(window).scrollTop();
+			if(scrollpos >=navoffeset){
+				$(".agileits_header").addClass("fixed");
+			}else{
+				$(".agileits_header").removeClass("fixed");
+			}
+		 });
+
+	});
+    </script>
+    <!-- //script-for sticky-nav -->
+    @Html.Partial("~/views/partials/_Header.cshtml")
+
+    <!-- products-breadcrumb -->
+    <div class="products-breadcrumb">
+        <div class="container">
+            <ul>
+                <li><i class="fa fa-home" aria-hidden="true"></i><a href="@Url.Content("~/")">Home</a><span>|</span></li>
+                <li>@Model.Content.Name</li>
+            </ul>
+        </div>
+    </div>
+    <!-- //products-breadcrumb -->
+    <!-- banner -->
+    <div class="banner">
+        @Html.Partial("~/views/partials/_leftnav.cshtml")
+        <div class="w3l_banner_nav_right">
+
+            <!--
+            Body Section
+            -->
+            @RenderBody()
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- banner -->
+    <!--
+    Footer
+    -->
+    @Html.Partial("~/views/partials/_Footer.cshtml")
+    <!-- /container -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    @Html.Partial("~/views/partials/_Scripts.cshtml")
+
+</body>
+</html>

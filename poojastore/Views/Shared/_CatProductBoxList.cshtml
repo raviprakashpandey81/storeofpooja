@@ -1,0 +1,26 @@
+﻿@using Merchello.Core
+@model IEnumerable<Merchello.Web.Models.VirtualContent.IProductContent>
+    
+
+
+
+    @if (Model.Any())
+    {
+        foreach (var row in Model.ToArray().Split(3))
+        {
+            
+                foreach (var product in row)
+                {
+                    
+                        @Html.Partial("_CatProductBox", product)
+                   
+                }
+            
+        }
+    }
+    else
+    {
+        <div class="alert alert-info" role="alert">
+            No recently viewed products
+        </div>
+    }

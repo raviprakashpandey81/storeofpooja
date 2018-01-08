@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+Layout = "_layoutInner.cshtml";
+}
+
+@* the fun starts here *@
+
+
+@Umbraco.RenderMacro("renderUmbracoForm", new {FormGuid="96e54d4c-2b95-4674-97e1-9f3659d8ea19", FormTheme="", ExcludeScripts="0"})
